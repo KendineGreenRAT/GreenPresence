@@ -47,13 +47,13 @@ public class main {
         handlers.ready = (user) -> System.out.println("Discord RPC Aktif edildi!");
         lib.Discord_Initialize(applicationId, handlers, true, steamId);
         DiscordRichPresence presence = new DiscordRichPresence();
-        presence.startTimestamp = System.currentTimeMillis() / 1000; // epoch second
+        presence.startTimestamp = System.currentTimeMillis() / 1000; 
         presence.details = details;
         presence.state = status;
         presence.largeImageKey = largeimagekey;
         presence.smallImageKey = smallimagekey;
         lib.Discord_UpdatePresence(presence);
-        // in a worker thread
+      
         new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 lib.Discord_RunCallbacks();
